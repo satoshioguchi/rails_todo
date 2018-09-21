@@ -1,0 +1,77 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @group.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @group.description %>
+</p>
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>
+
+
+
+
+
+<table border>
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>本文</th>
+      <th>状態</th>
+      <th>優先度</th>
+      <th>カテゴリ</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @groups_todos.try(:each) do |g_todo| %>
+      <tr>
+        <td><%= g_todo.title %></td>
+        <td><%= g_todo.body %></td>
+        <td><%= g_todo.status %></td>
+        <td><%= g_todo.priority %></td>
+        <td><%= g_todo.category.try(:name) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+<%= form_for(@todo, :url => {:controller => :groups, :action => :todo_create}) do |f| %>
+<%= render 'shared/errors', object: @todo %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body, rows: 5 %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :priority %><br>
+    <%= f.number_field :priority %>
+  </div>
+  <div class="field">
+    <%= f.label :group_id %><br>
+    <%= f.number_field :group_id %>
+  </div>
+  <div class ="field">
+    <%= f.label :category %><br>
+    <% @categories = Category.all %>
+    <%= f.select :category_id, @categories.map{|t| [t.name, t.id]}, include_blank: true %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

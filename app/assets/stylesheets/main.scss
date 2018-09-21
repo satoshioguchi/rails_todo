@@ -1,0 +1,68 @@
+body {
+    font-size: 24px;
+}
+
+#wrapper{
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+    
+    header {
+        background-color: #CCC;
+    }
+}
+
+table {
+    border: 1px solid #CCC;
+    border-collapse: separate;
+    width: 100%;
+    
+    th {
+        background-color: #CCC;
+    }
+    
+    td {
+        padding: 4px;
+    }
+}
+
+.two {
+    padding-top: 20px;
+    border: 1px solid #CCC;
+    border-collapse: separate;
+    width: 100%;
+}
+
+nav.pagination {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 4px;
+}
+
+form {
+    width: 50%;
+    margin: 0 auto;
+    
+    input[type=text], textarea{
+        width: 100%;
+    }
+}
+
+form {
+    width: 50px;
+    margin: 0 auto;
+    
+    input[type=text], textarea{
+        width: 100%;
+    }
+}
+
+.panel {
+    width: 50px;
+    margin: 0 auto;
+}
+
+.navigations {
+    width: 50%;
+    margin: 0 auto;
+}

@@ -1,0 +1,26 @@
+<%= form_for(@todo) do |f| %>
+<%= render 'shared/errors', object: @todo%>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body, rows: 5 %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :priority %><br>
+    <%= f.number_field :priority %>
+  </div>
+  <div class ="field">
+    <%= f.label :category %><br>
+    <% @categories = Category.all %>
+    <%= f.select :category_id, @categories.map{|t| [t.name, t.id]}, include_blank: true %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
